@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040" role="img" aria-labelledby="title description">
+  <title id="title">AutomationPractice Playwright framework flow</title>
+  <desc id="description">A flow diagram showing how a developer or GitHub Actions starts Playwright, how configuration selects tests and browsers, how fixtures provide page objects, and how Playwright drives the Sauce Demo website and produces reports.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#526581"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1,1 L11,6 L1,11 Z" fill="#2867b2"/>
+    </marker>
+    <style>
+      text { font-family: "Segoe UI", Arial, sans-serif; fill: #172b4d; }
+      .title { font-size: 34px; font-weight: 700; }
+      .subtitle { font-size: 17px; fill: #526581; }
+      .lane-title { font-size: 16px; font-weight: 700; letter-spacing: 1px; fill: #526581; }
+      .box-title { font-size: 19px; font-weight: 700; }
+      .box-copy { font-size: 15px; fill: #344563; }
+      .small { font-size: 14px; fill: #526581; }
+      .code { font-family: Consolas, "Courier New", monospace; font-size: 14px; fill: #123b66; }
+      .lane { fill: #f7f9fc; stroke: #d8e0ec; stroke-width: 1.5; }
+      .box { fill: #ffffff; stroke: #8ca0b8; stroke-width: 2; rx: 14; }
+      .blue { fill: #eaf3ff; stroke: #2867b2; }
+      .green { fill: #e8f6ef; stroke: #25805a; }
+      .purple { fill: #f2edff; stroke: #7153a6; }
+      .orange { fill: #fff3e3; stroke: #b96b13; }
+      .optional { fill: #faf8ff; stroke: #927bb8; stroke-dasharray: 7 5; }
+      .flow { fill: none; stroke: #526581; stroke-width: 3; marker-end: url(#arrow); }
+      .flow-blue { fill: none; stroke: #2867b2; stroke-width: 3; marker-end: url(#arrowBlue); }
+      .feedback { fill: none; stroke: #25805a; stroke-width: 2.5; stroke-dasharray: 8 6; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1040" fill="#ffffff"/>
+  <text x="60" y="62" class="title">AutomationPractice — Playwright framework flow</text>
+  <text x="60" y="94" class="subtitle">A map of the existing automated checks: from starting a test to seeing its result</text>
+
+  <rect x="40" y="125" width="1520" height="135" rx="18" class="lane"/>
+  <text x="65" y="158" class="lane-title">1 · START AND SETTINGS</text>
+  <rect x="90" y="175" width="270" height="62" class="box blue"/>
+  <text x="225" y="201" text-anchor="middle" class="box-title">Developer or GitHub Actions</text>
+  <text x="225" y="223" text-anchor="middle" class="box-copy">starts the test run</text>
+  <rect x="490" y="175" width="330" height="62" class="box"/>
+  <text x="655" y="201" text-anchor="middle" class="box-title">playwright.config.ts</text>
+  <text x="655" y="223" text-anchor="middle" class="box-copy">test folder · base URL · browsers · report</text>
+  <rect x="950" y="175" width="300" height="62" class="box purple"/>
+  <text x="1100" y="201" text-anchor="middle" class="box-title">Playwright test runner</text>
+  <text x="1100" y="223" text-anchor="middle" class="box-copy">finds and runs each test</text>
+  <path d="M360 206 H480" class="flow"/>
+  <path d="M820 206 H940" class="flow"/>
+
+  <rect x="40" y="285" width="1520" height="225" rx="18" class="lane"/>
+  <text x="65" y="318" class="lane-title">2 · TEST AND PAGE OBJECT MODEL</text>
+  <rect x="90" y="350" width="300" height="105" class="box blue"/>
+  <text x="240" y="380" text-anchor="middle" class="box-title">Test stories</text>
+  <text x="240" y="405" text-anchor="middle" class="box-copy">tests/*.spec.ts</text>
+  <text x="240" y="429" text-anchor="middle" class="box-copy">actions + expected results</text>
+  <rect x="500" y="350" width="300" height="105" class="box purple"/>
+  <text x="650" y="380" text-anchor="middle" class="box-title">Fixtures</text>
+  <text x="650" y="405" text-anchor="middle" class="box-copy">storefront-fixtures.ts</text>
+  <text x="650" y="429" text-anchor="middle" class="box-copy">prepares page objects for tests</text>
+  <rect x="910" y="350" width="300" height="105" class="box green"/>
+  <text x="1060" y="380" text-anchor="middle" class="box-title">Page Objects (POM)</text>
+  <text x="1060" y="405" text-anchor="middle" class="box-copy">StorefrontPage · CatalogPage</text>
+  <text x="1060" y="429" text-anchor="middle" class="box-copy">ProductPage: actions + locators</text>
+  <rect x="1320" y="350" width="200" height="105" class="box orange"/>
+  <text x="1420" y="380" text-anchor="middle" class="box-title">Playwright API</text>
+  <text x="1420" y="405" text-anchor="middle" class="box-copy">Page + Locator</text>
+  <text x="1420" y="429" text-anchor="middle" class="box-copy">open · find · check</text>
+  <path d="M1100 237 V282 H240 V340" class="flow"/>
+  <path d="M390 402 H490" class="flow"/>
+  <path d="M800 402 H900" class="flow"/>
+  <path d="M1210 402 H1310" class="flow"/>
+  <text x="440" y="390" text-anchor="middle" class="small">asks for helpers</text>
+  <text x="855" y="390" text-anchor="middle" class="small">provides page</text>
+  <text x="1260" y="390" text-anchor="middle" class="small">uses</text>
+  <text x="240" y="482" text-anchor="middle" class="code">expect(...).toBeVisible()</text>
+
+  <rect x="40" y="535" width="1520" height="205" rx="18" class="lane"/>
+  <text x="65" y="568" class="lane-title">3 · BROWSER VISITS THE WEBSITE</text>
+  <rect x="175" y="600" width="330" height="90" class="box orange"/>
+  <text x="340" y="632" text-anchor="middle" class="box-title">Browser engines</text>
+  <text x="340" y="658" text-anchor="middle" class="box-copy">Chromium · Firefox · WebKit</text>
+  <rect x="650" y="600" width="390" height="90" class="box green"/>
+  <text x="845" y="632" text-anchor="middle" class="box-title">Sauce Demo Shopify website</text>
+  <text x="845" y="658" text-anchor="middle" class="box-copy">https://sauce-demo.myshopify.com</text>
+  <path d="M1420 455 V575 H340 V590" class="flow"/>
+  <path d="M505 645 H640" class="flow-blue"/>
+  <path d="M845 690 V715 H340 V700" class="feedback"/>
+  <text x="572" y="630" text-anchor="middle" class="small">opens address</text>
+  <text x="590" y="710" text-anchor="middle" class="small">website returns page content to the browser</text>
+
+  <rect x="40" y="765" width="1520" height="225" rx="18" class="lane"/>
+  <text x="65" y="798" class="lane-title">4 · RESULTS AND EXTRA TOOLING</text>
+  <rect x="110" y="830" width="370" height="100" class="box green"/>
+  <text x="295" y="862" text-anchor="middle" class="box-title">Test expectations</text>
+  <text x="295" y="888" text-anchor="middle" class="box-copy">compare actual page with expected result</text>
+  <text x="295" y="911" text-anchor="middle" class="box-copy">test passes or reports a failure</text>
+  <rect x="610" y="830" width="370" height="100" class="box blue"/>
+  <text x="795" y="862" text-anchor="middle" class="box-title">Playwright HTML report</text>
+  <text x="795" y="888" text-anchor="middle" class="box-copy">playwright-report/</text>
+  <text x="795" y="911" text-anchor="middle" class="box-copy">summary of the test run</text>
+  <rect x="1110" y="830" width="390" height="100" class="box optional"/>
+  <text x="1305" y="862" text-anchor="middle" class="box-title">VS Code Playwright MCP</text>
+  <text x="1305" y="888" text-anchor="middle" class="box-copy">.vscode/mcp.json</text>
+  <text x="1305" y="911" text-anchor="middle" class="box-copy">optional editor / agent helper</text>
+  <path d="M1420 455 V748 H295 V820" class="flow"/>
+  <text x="650" y="763" text-anchor="middle" class="small">test checks what the browser shows</text>
+  <path d="M480 880 H600" class="flow"/>
+  <path d="M1100 880 H990" class="feedback"/>
+  <text x="1305" y="958" text-anchor="middle" class="small">Not required for a normal `npx playwright test` run</text>
+
+  <text x="60" y="1020" class="small">POM means Page Object Model: tests describe what to check; page objects know how to find and use page controls.</text>
+</svg>

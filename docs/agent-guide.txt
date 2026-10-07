@@ -1,0 +1,34 @@
+1. Create a repository and clone repository on local system.
+2. Install playwright in automation repository.
+     > npm init playwright@latest
+
+3. configure playwright agents locally with below command .
+   -> npx playwright init-agents --loop=vscode
+
+4. It will create .github folder and add custom agent in the .github folder.
+   -> planner : This agent help to create comprehensive test plan.
+   -> generator : This agent write automation with reference of test planner.
+   -> healer : This agent will execute the test cases and fix failures.
+
+5. It will also create a .vscode folder, then playwright MCP configuration is available.
+    -> filename : playwright mcp server (mcp.json)
+
+6. Create a comprehensive test plan with help the planner.
+    -> go AI chat window.
+    -> select agent link, all custom  agent will be listed there.
+    -> select planer agent and provide prompt to create test plan.
+     prompt :
+     Create comprehensie test plan for given website .
+     https://sauce-demo.myshopify.com/
+
+    -> it will go each and every component of the website and create a comprehensive test plan.
+
+7. Generate automation code with generator agent.
+   -> Select generator agent
+   -> Prompt :
+      impliment automation code for ### 1. Storefront and Catalog
+    - create Page object model framework.
+    - Make sure test, pages, fixtures, and all folder should be be on same,
+      dont create any folder insider tests folder.
+
+    - impliment new feature automation with POM framework
